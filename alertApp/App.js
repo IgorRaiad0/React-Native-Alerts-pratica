@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Alert, Button, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Alert, Button,} from 'react-native';
 
 export default function App() {
 
@@ -23,6 +23,12 @@ const abrirAlertaComTresBotoes = () =>{
      {text: 'Não', onPress: ()=> console.log("Não")}],
      {cancelable: false});
 }
+
+const randomBtns =() => {
+  const botoes = [abrirAlerta, abrirAlertaComDoisBotoes, abrirAlertaComTresBotoes];
+  const escolha = Math.floor(Math.random() * botoes.length)
+  return botoes[escolha]();
+}
   return (
     <View style={styles.container}>
        <StatusBar style="auto" />
@@ -36,7 +42,7 @@ const abrirAlertaComTresBotoes = () =>{
       <View style={styles.desafio}>
         <Text>PARTE DO DESAFIO</Text>
 
-        <Button title='Radom btn'/>
+        <Button title='Radom btn' onPress={randomBtns}/>
       </View>
 
       
